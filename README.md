@@ -45,16 +45,65 @@ https://github.com/user-attachments/assets/316df9d7-7e5a-47f3-9cdd-c0bae09110ae
 
 ## Getting Started
 
-```bash
-# Install dependencies
-npm install
+### Prerequisites
+- Docker Engine (v20.10 or higher)
+- Node.js (v20 or higher) and npm (for local development without Docker)
+- Git
 
-# Start development server
-npm run dev
+---
 
-# Build for production
-npm run build
-```
+### Running via Docker (Recommended)
+To run the pre-built, production-ready container from Docker Hub:
+
+1. Pull the official Docker image:
+   ```bash
+   docker pull bgari133/stans-app:latest
+   ```
+
+2. Run the container on port 80:
+   ```bash
+   docker run -d -p 80:80 --name stans-app --restart=always bgari133/stans-app:latest
+   ```
+
+3. Open your browser and navigate to `http://localhost` (or your server's IP address).
+
+---
+
+### Local Development
+To run the application locally using Node.js:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Bgari133/STANS.git
+   cd STANS
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm ci
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+### Building the Image Locally
+To build and execute the Docker image locally from source:
+
+1. Build the Docker image:
+   ```bash
+   docker build -t stans-app:local .
+   ```
+
+2. Run the container:
+   ```bash
+   docker run -d -p 80:80 --name stans-app-local stans-app:local
+   ```
+
+---
 
 ## License
 
