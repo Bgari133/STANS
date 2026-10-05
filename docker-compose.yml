@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  stans-app:
+    image: bgari133/stans-app:latest
+    container_name: stans-app
+    restart:  always
+    networks:
+      - web-network
+
+nginx-proxy-manager:
+  image: 'jc21/nginx-proxy-manager:latest'
+  container_name: nginx-proxy-manager
+  restart: unless-stopped
+  ports:
+    - '80:80'
+    - '443:443'
+    - '81:81'
+
+  volumes:
+    - ./npm-data:/data
+    - ./letsencrypt:/etc/letsencrypt
+  networks:
+    - web-network
+
+networks:
+  web-network:
+    driver: bridge
+
+
+
